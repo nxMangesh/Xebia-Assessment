@@ -3,11 +3,17 @@ import morgan from "morgan";
 import bodyParser from "body-parser";
 import path from 'path';
 import route from "./server/routes/router";
+import dotenv from 'dotenv';
+import connectDB from './server/database/connection';
 
 const app = express();
-const PORT = 8080;
+
+// dotenv.config({path: 'config.env'});
+const PORT = process.env.PORT || 8080;
 
 app.use(morgan('tiny'));
+
+// connectDB();
 
 app.use(bodyParser.urlencoded({extended: true}));
 
